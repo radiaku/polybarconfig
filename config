@@ -63,8 +63,8 @@ font-3 = FontAwesome5Free:style=Solid:pixelsize=10;3
 font-4 = FontAwesome5Brands:style=Solid:pixelsize=10;3
 
 
-modules-left = i3 sp2 info-hackspeed sp2
-modules-right = weather sp1 linux-ver sp1 updates sp2 date sp2
+modules-left = i3 
+modules-right = linux-ver sp1 date sp1 pulseaudio sp2 battery sp1 bluetooth sp1
 
 tray-position = right
 tray-padding = 0
@@ -240,3 +240,46 @@ compositing-border = over
 [global/wm]
 margin-top = 5
 margin-bottom = 5
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+use-ui-max = true
+interval = 2
+
+format-volume =   <label-volume>
+label-volume = %percentage%%
+
+format-muted =   muted
+label-muted-foreground = #ff5555
+
+scroll-up = pactl set-sink-volume @DEFAULT_SINK@ +5%
+scroll-down = pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+click-left = pavucontrol
+click-right = pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+[module/battery]
+type = internal/battery
+; cek nama di: ls /sys/class/power_supply
+battery = BAT1
+adapter = AC
+
+poll-interval = 10
+
+format-charging =  <label-charging>
+label-charging = %percentage%%
+
+format-discharging =  <label-discharging>
+label-discharging = %percentage%%
+
+format-full =  <label-full>
+label-full = %percentage%%
+
+[module/bluetooth]
+type = custom/script
+exec = ~/.config/polybar/scripts/bluetooth.sh
+interval = 5
+
+; klik buat buka blueman
+click-left = blueman-manager

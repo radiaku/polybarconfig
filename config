@@ -64,7 +64,7 @@ font-4 = Iosevka Nerd Font:style=Solid:pixelsize=10;3
 
 
 modules-left = i3 
-modules-right = linux-ver sp1 date sp1 pulseaudio sp2 battery sp1 bluetooth sp1
+modules-right = linux-ver sp1 date sp1 pulseaudio sp1 backlight sp1 battery sp1 bluetooth sp1
 
 tray-position = right
 tray-padding = 0
@@ -283,3 +283,16 @@ interval = 5
 
 ; klik buat buka blueman
 click-left = blueman-manager
+
+[module/backlight]
+type = internal/backlight
+
+; cek nama di: ls /sys/class/backlight
+card = nvidia_wmi_ec_backlight
+
+format =  <label>
+label = %percentage%%
+
+; scroll untuk naik / turun brightness
+scroll-up = brightnessctl set +5%
+scroll-down = brightnessctl set 5%-

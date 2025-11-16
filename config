@@ -284,15 +284,14 @@ interval = 5
 ; klik buat buka blueman
 click-left = blueman-manager
 
-[module/backlight]
-type = internal/backlight
 
-; cek nama di: ls /sys/class/backlight
-card = nvidia_wmi_ec_backlight
+[module/backlight]
+type = custom/script
+exec = bash -c "brightnessctl -m | cut -d, -f4"  ; contoh output: 69%
+interval = 1
 
 format =  <label>
-label = %percentage%%
+label = %output%
 
-; scroll untuk naik / turun brightness
 scroll-up = brightnessctl set +5%
 scroll-down = brightnessctl set 5%-

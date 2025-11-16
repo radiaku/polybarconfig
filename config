@@ -165,7 +165,7 @@ label = %output%
 type = internal/date
 interval = 1
 
-time = "%a %d %I:%M %P"
+time = "%a, %d %b %Y, %T"
 
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}

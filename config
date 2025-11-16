@@ -78,8 +78,8 @@ tray-offset-y = 0
 
 wm-restack = i3
 
-scroll-up = #i3.next
-scroll-down = #i3.prev
+;scroll-up = #i3.next
+;scroll-down = #i3.prev
 
 cursor-click = pointer
 

@@ -64,7 +64,7 @@ font-4 = Iosevka Nerd Font:style=Solid:pixelsize=10;3
 
 
 modules-left = i3 
-modules-right = linux-ver sp1 date sp1 pulseaudio sp1 backlight sp1 battery sp1 bluetooth sp1
+modules-right = linux-ver sp1 date sp1 pulseaudio sp1 backlight sp1 temperature sp1 gpu-temp sp1 bluetooth sp1 battery sp1 
 
 tray-position = right
 tray-padding = 0
@@ -263,7 +263,7 @@ click-right = pactl set-sink-mute @DEFAULT_SINK@ toggle
 type = internal/battery
 ; cek nama di: ls /sys/class/power_supply
 battery = BAT1
-adapter = AC
+adapter = ACAD
 
 poll-interval = 10
 
@@ -295,3 +295,26 @@ label = %output%
 
 scroll-up = brightnessctl set +5%
 scroll-down = brightnessctl set 5%-
+
+[module/temperature]
+type = internal/temperature
+
+; CPU AMD via k10temp
+hwmon-path = /sys/class/hwmon/hwmon5/temp1_input
+
+base-temperature = 20
+warn-temperature = 75
+
+format =  <label>
+label = %temperature-c%°
+
+format-warn =  <label-warn>
+label-warn = %temperature-c%°
+label-warn-foreground = #ff5555
+
+[module/gpu-temp]
+type = internal/temperature
+hwmon-path = /sys/class/hwmon/hwmon4/temp1_input
+
+format =  <label>
+label = %temperature-c%°

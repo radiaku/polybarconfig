@@ -15,5 +15,5 @@ if bluetoothctl info | grep -q "Connected: yes"; then
 elif bluetoothctl devices Connected | grep -q "Device"; then
   echo " conn"
 else
-  echo " on"
+  echo " avail"
 fi
